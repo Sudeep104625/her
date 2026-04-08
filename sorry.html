@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+h1 {
+    color: #e63946;
+}
+
+#message {
+    font-size: 18px;
+    margin-top: 15px;
+    min-height: 120px;
+}
+
+.final {
+    font-size: 22px;
+    color: #e63946;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.promise {
+    font-size: 20px;
+    color: #2ecc71;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+button {
+    margin: 8px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.yes {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.no {
+    background-color: #e63946;
+    color: white;
+}
+
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-800px);
+        opacity: 0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="c:\Users\sudee\OneDrive\Desktop\her\WhatsApp Image 2026-04-08 at 9.50.50 AM (1).jpeg" alt="Our Photo">
+
+<h1>I'm Sorry ❤️‍🩹🫂</h1>
+
+<div id="message"></div>
+
+<div class="final" id="finalText"></div>
+
+<div class="promise" id="promiseText"></div>
+
+<button onclick="startTyping()">Read My Message</button>
+
+<br>
+
+<button class="yes" onclick="yesClicked()">Give One Chance ❤️‍🩹</button>
+<button class="no" onclick="moveButton(this)">Not Yet </button>
+
+<audio id="music" loop>
+    <source src="C:\Users\sudee\OneDrive\Desktop\her\Saiyaara Title Song _ Ahaan Panday, Aneet Padda _ Tanishk Bagchi, Faheem A, Arslan N _ Irshad Kamil.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<script>
+
+const text = "I know I made mistakes and hurt you deeply. " +
+"I truly admit my mistakes and I'm working on changing myself every day. " +
+"I want to fix our problems and make things better between us. " +
+"I’m really sorry for everything I did. " +
+"Please give me one chance to prove that I can change.";
+
+let i = 0;
+
+function startTyping() {
+
+document.getElementById("music").play();
+
+document.getElementById("message").innerHTML = "";
+document.getElementById("finalText").innerHTML = "";
+document.getElementById("promiseText").innerHTML = "";
+
+i = 0;
+typeWriter();
+
+}
+
+function typeWriter() {
+
+if (i < text.length) {
+
+document.getElementById("message").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeWriter, 40);
+
+}
+else {
+
+showFinal();
+
+}
+
+}
+
+function showFinal() {
+
+document.getElementById("finalText").innerHTML =
+"Will you walk with me again? 🙃❤️‍🩹";
+
+createHearts();
+
+}
+
+function moveButton(button) {
+
+button.style.position = "absolute";
+
+button.style.left = Math.random() * 80 + "%";
+button.style.top = Math.random() * 80 + "%";
+
+}
+
+function yesClicked() {
+
+document.getElementById("promiseText").innerHTML =
+"I promise to listen more,understand you better and never repeat the mistakes that hurts you 🙂❤️‍🩹🫂";
+
+createHearts();
+
+}
+
+function createHearts() {
+
+setInterval(() => {
+
+let heart = document.createElement("div");
+
+heart.className = "heart";
+heart.innerHTML = "❤️‍🩹";
+
+heart.style.left = Math.random() * 100 + "vw";
+heart.style.bottom = "0";
+
+document.body.appendChild(heart);
+
+setTimeout(() => {
+heart.remove();
+}, 5000);
+
+}, 500);
+
+}
+
+</script>
+
+</body>
+
+</html>
